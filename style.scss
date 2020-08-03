@@ -1,0 +1,143 @@
+
+body{
+    overflow-x:hidden;
+}
+.navbar{
+    background-color:rgba(0,0,0,0.4) !important;
+}
+.nav-item a{
+       color:white!important;
+       font-size:1.2rem;
+       text-transform: uppercase;
+}
+.navbar-brand{
+    font-weight: 500;
+    font-size: 2rem;
+    letter-spacing: .1rem;
+    color:white;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    img{
+       height: 3.5rem;
+    }
+}
+.header{
+    background-image: url(resources/header.jpg);
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    background-attachment:fixed;
+}
+.caption{
+    color:#ffff;
+     z-index:1;
+     width: 100%;
+     position: absolute;
+     top:42%;
+     
+    h1{
+        font-size:3.5rem;
+        text-shadow: .1rem .1rem .8rem black;
+        font-weight: 650;
+        letter-spacing: .1rem;
+    }
+    .btn-lg{
+        margin-top:8rem;
+        color:#6f4e37;
+        opacity:.9;
+        font-size:1.5rem;
+        border-radius:0;
+        &:hover{
+            opacity:.7;
+            color:#6f4e37;
+        }
+    }
+  #down-arrow{
+      display: block;
+      margin-top:8rem;
+      color:white;
+      background-color: transparent;
+      margin-left:auto;
+      margin-right: auto;
+      border:none;
+      outline:none;
+  }
+}
+.modal-content{
+    button{
+        outline: none;
+    }
+    a{
+        text-decoration: none;
+    }
+}
+.products{
+    .row{ 
+        div{
+            .add-tocart{
+            background-color: black;
+            color:white;
+            font-size:2rem;
+            width: 28.1rem;
+            position: relative;
+            top:-3.9rem;
+            opacity: 0.7;
+            border-radius: 0;
+            box-shadow: none;
+            }
+        } 
+    } 
+}
+.coffee-image{
+    background-image: url(resources/middle.jpg);
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    background-attachment:fixed;
+    background-size:100% 100%;
+}
+.subscribe{
+    h1{
+        margin-top:6rem;
+    }
+    p{
+        margin-top:2rem;
+    }
+    button{
+        margin-top:2rem;
+        margin-bottom:8rem;
+        background-color:#6f4e37;
+        color:white;
+        border-radius: 0;
+        font-size:1.8rem;
+        opacity: .9;
+        &:hover{
+            color:white;
+            opacity:.7;
+        }
+    }
+}
+footer{
+    background-color: #6f4e37;
+    ul{
+        list-style: none;
+        li{
+            padding-top:2rem;
+            a{
+                color:white;
+                &:hover{
+                    text-decoration: none;
+                    color:white;
+                }
+            }
+        }
+    }
+    .logos{
+        padding-top:4.5rem;
+    }
+}
+#subscribe-btn{
+    font-size:1.2rem;
+}
