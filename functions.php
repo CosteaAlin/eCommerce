@@ -2,7 +2,6 @@
 
 if(isset($_POST['submitButton']))
 {
-    echo 'here';
     $name=$_POST['item_name'];
     addtoCart($name);
   
@@ -19,9 +18,14 @@ if(isset($_POST['quantityInput']))
     $quantity=$_POST['quantityInput'];
     updateCart($name,$quantity);
 }
+
+function connectDB(){
+  $connection= mysqli_connect('localhost','root','','coffee') or die($connection->connect_error);
+  return $connection;
+}
  function readfromDB($table)
 {
-    $connection= mysqli_connect('localhost','root','','coffee') or die($connection->connect_error);
+    $connection=connectDB();
     $query="SELECT * FROM $table";
     $result=mysqli_query($connection,$query);
     while($row=mysqli_fetch_array($result))
@@ -46,7 +50,7 @@ if(isset($_POST['quantityInput']))
 }
 function addtoCart($name)
 {
-    $connection= mysqli_connect('localhost','root','','coffee') or die($connection->connect_error);
+    $connection=connectDB();
     $query="INSERT INTO cart(name,quantity) VALUES ('$name',1)";
     $result=mysqli_query($connection,$query);
     mysqli_close($connection);
@@ -54,7 +58,7 @@ function addtoCart($name)
   
 function displayCart()
 {
-    $connection= mysqli_connect('localhost','root','','coffee') or die($connection->connect_error);
+    $connection=connectDB();
     $query="SELECT * FROM cart";
     $result=mysqli_query($connection,$query);
     $totalPrice=0;
@@ -73,7 +77,7 @@ function displayCart()
         <div class="col-md-4">
         <form method="post" class="d-flex">
         <input type="hidden" name="cartName" class="cartName" value="<?php echo $name;?>">
-        <button class="btn btn-sm btn-danger dismissButton">&times;</button>
+        <button class="btn btn-sm btn-danger dismissButton" name="dismissButton">&times;</button>
         </form>
         <?php echo '<img class="" src="data:image/jpeg;base64,'.base64_encode( $secondRow['image'] ).'"/>';
          echo '</div>'; 
@@ -93,7 +97,7 @@ function displayCart()
     if($totalPrice>0)
     {
     echo '<span><h4 class="text-center mt-5">Total Price: $'.$totalPrice.' USD</h6></span>';
-    echo '<button class="btn btn-lg btn-info mb-5">Check Out</button>';
+    echo '<button class="btn btn-lg btn-info mb-5" name="checkout">CHECKOUT</button>';
     }
     else
     echo '<h5>You have nothing in your shopping cart.</h5>';
@@ -102,7 +106,7 @@ function displayCart()
 
   function deletefromCart($name)
   {
-    $connection= mysqli_connect('localhost','root','','coffee') or die($connection->connect_error);
+    $connection=connectDB();
     $query="DELETE FROM cart where name ='$name'";
     $result=mysqli_query($connection,$query);
     mysqli_close($connection);
@@ -110,7 +114,7 @@ function displayCart()
 
   function updateCart($name,$quantity)
   {
-    $connection= mysqli_connect('localhost','root','','coffee') or die($connection->connect_error);
+    $connection=connectDB();
     $query="UPDATE cart SET quantity = $quantity where name ='$name'";
     $result=mysqli_query($connection,$query);
     mysqli_close($connection);
