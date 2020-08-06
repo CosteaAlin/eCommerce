@@ -14,8 +14,8 @@
                 <div class="modal-body">
         <form method="post" class="subscribe-form">
                   <label for="subscribe-email">Email</label>
-                  <input type="email" name="subscribe-email" class="form-control" id="subscribe-email" required>
-                  <button class="btn btn-info btn-block mt-4" name="subscribeButton" id="subscribe-btn">Subscribe</button>
+                  <input type="email" name="subEmail" class="form-control" id="subEmail" required>
+                  <button class="btn btn-info btn-block mt-4" name="subscribeButton" id="subButton">Subscribe</button>
                   <p class="sub-status text-center pt-4 lead"></p>
         </form>     
        </div>

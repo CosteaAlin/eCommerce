@@ -25,11 +25,11 @@ $(document).ready(function(){
     })
 }); 
 
-$(document).ready(function(e){
-    $(".subscribe-form").submit(function(event){
-      e.preventDefault();   
-        var subEmail=$("#subscribe-email").val();
-        var submit=$("#subscribe-btn").val();
+$(document).ready(function(){
+    $("#subButton").on('click', function(event){
+      event.preventDefault();
+        var subEmail=$("#subEmail").val();
+        var submit=$("#subButton").val();
         $(".sub-status").load("sub.php", {
             subEmail: subEmail,
             subscribeButton: submit,
@@ -57,4 +57,54 @@ $(document).ready(function(e){
              }
          });
      });
+ });
+
+ $(document).ready(function(){
+    $("#signIn").on('click', function(e){  
+        var email=$("#email").val();
+        var pass=$("#password").val();
+        var submit=$("#signIn").val();
+         $.ajax({
+             url: 'sign-in.php',
+             method: 'post',
+             data:
+             {
+                loginButton:submit,
+                email:email,
+                password:pass,
+             },
+             success: function(response){
+                 if(response=="success")
+                   {
+                      location.reload();
+                   }
+                   else
+                   {
+                    e.preventDefault(); 
+                    document.querySelector(".loginStatus").innerHTML = response;
+                   }
+             }
+         });
+              
+    });
+});
+
+$(document).ready(function(e){
+    $("#signupButton").on('click', function(e){
+      e.preventDefault();   
+        var firstName=$("#firstName").val();
+        var lastName=$("#lastName").val();
+        var createEmail=$("#createEmail").val();
+        var createPassword=$("#createPassword").val();
+        var confirmPassword=$("#confirmPassword").val();
+        var signupButton=$("#signupButton").val();
+        $(".signupStatus").load("sign-up.php", {
+             firstName:firstName,
+             lastName:lastName,
+             createEmail:createEmail,
+             createPassword:createPassword,
+             confirmPassword:confirmPassword,
+             signupButton:signupButton,
+        });  
+    });
  });
